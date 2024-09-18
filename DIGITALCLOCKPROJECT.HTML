@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .container{
+        background-color: grey;
+        width: 100%;
+        height: 100vh;
+    }
+    .hour{
+        background-color: blue;
+        width: 600px;
+        height: 300px;
+        position: absolute;
+        left: 30%;
+        top: 30%;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 5px 25px lightblue;
+        font-size: 70px;
+        color: white;
+    }
+    #hours{
+        background: linear-gradient(red,white);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-left: 60px;
+    }
+    #dots{
+        margin-left: 20px;
+    }
+    #minutes{
+        margin-left: 20px;
+        background: linear-gradient(red,white);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;    
+    }
+    #period{margin-left: 20px;
+        color: orange; 
+    }
+     #seconds{transform: translateX(20px);
+        background: linear-gradient(red,white);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="hour">
+        <span id="hours">00</span>
+        <span id="dots">:</span>
+        <span id="minutes">00</span>
+        <span id="period">PM</span>
+       <span id="seconds">00</span>
+        </div>
+    </div>
+    <script>
+    function clock(){
+    let hours=document.getElementById("hours")
+    let minutes=document.getElementById("minutes")
+    let seconds=document.getElementById("seconds")
+    let period=document.getElementById("period")
+
+   let h = new Date().getHours()
+   let m = new Date().getMinutes()
+   let s = new Date().getSeconds()
+
+   let ampm = h>=12 ? "PM" : "AM"
+
+   if(h>12){
+    h = h-12
+   }
+
+   h = (h < 10) ? "0" + h : h
+   m = (m < 10) ? "0" + m : m
+   s = (s < 10) ? "0" + s : s
+
+
+   hours.innerHTML= h
+   minutes.innerHTML = m
+   seconds.innerHTML = s
+   period.innerHTML = ampm
+
+
+
+
+
+    }
+    setInterval(clock,1000)
+    </script>
+</body>
+</html>
